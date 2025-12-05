@@ -1,6 +1,8 @@
 # PowerBI-Credit-Card-Analytics
  A Power BI dashboard built using SQL-based customer and transaction data to analyze weekly credit card performance metrics. Provides insights into revenue, transactions, customer segments, and delinquency trends.
 
+ https://github.com/danishda8318-blip/PowerBI-Credit-Card-Analytics/blob/main/Credit_Card_Report.pdf
+
 ## Credit Card Financial Dashboard
 ** Overview**
 
