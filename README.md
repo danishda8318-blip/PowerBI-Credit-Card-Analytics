@@ -363,7 +363,7 @@ CALCULATE (
 ![Credit_Card_Report_page-0002](https://github.com/user-attachments/assets/c96ec3cb-d257-4654-a825-5f31a86a4443)
 
 
-**Project Insights — Week 53 **
+## Project Insights — Week 53 ##
 ## Week-over-Week (WoW) Changes
 Revenue increased by 28.8%
 
