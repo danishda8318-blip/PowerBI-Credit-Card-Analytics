@@ -20,9 +20,7 @@ Source: SQL database (imported from CSV files)
 
 Tables: cust_detail, cc_detail
 
-**Rows/Columns: Coming soon ?**
 
-Fields Included: Customer details, income, job, card category, annual fees, interest, transaction amount, week date, etc.
 
 ## Tools & Technologies Used
 
@@ -30,7 +28,7 @@ Power BI
 
 Power Query
 
-SQL Server / PostgreSQL
+SQL Server/MS SQL
 
 DAX Measures
 
@@ -38,26 +36,67 @@ Data Modelling
 
 ## Data Cleaning & Transformation 
 Data type formatting
+
 Calculated columns (Age Group, Income Group)
+
 Applying business rules
 
 
 
 ## DAX Measures
+DAX Measures Used
+**1. Age Group Classification**
+AgeGroup =
+SWITCH (
+    TRUE(),
+    'public cust_detail'[customer_age] < 30, "20-30",
+    'public cust_detail'[customer_age] >= 30 && 'public cust_detail'[customer_age] < 40, "30-40",
+    'public cust_detail'[customer_age] >= 40 && 'public cust_detail'[customer_age] < 50, "40-50",
+    'public cust_detail'[customer_age] >= 50 && 'public cust_detail'[customer_age] < 60, "50-60",
+    'public cust_detail'[customer_age] >= 60, "60+",
+    "Unknown"
+)
 
-AgeGroup
+**2. Income Group Classification**
+IncomeGroup =
+SWITCH (
+    TRUE(),
+    'public cust_detail'[income] < 35000, "Low",
+    'public cust_detail'[income] >= 35000 && 'public cust_detail'[income] < 70000, "Medium",
+    'public cust_detail'[income] >= 70000, "High",
+    "Unknown"
+)
 
-IncomeGroup
+**3. Week Number Calculation**
+week_num2 =
+WEEKNUM ( 'public cc_detail'[week_start_date] )
 
-Revenue
+**4. Revenue Calculation**
+Revenue =
+'public cc_detail'[annual_fees] +
+'public cc_detail'[total_trans_amt] +
+'public cc_detail'[interest_earned]
 
-Week Number
+**5. Current Week Revenue**
+Current_week_Reveneue =
+CALCULATE (
+    SUM ( 'public cc_detail'[Revenue] ),
+    FILTER (
+        ALL ( 'public cc_detail' ),
+        'public cc_detail'[week_num2] = MAX ( 'public cc_detail'[week_num2] )
+    )
+)
 
-Current Week Revenue
-
-Previous Week Revenue
-
-Credit Card Financial Weekly Da…
+**6. Previous Week Revenue**
+Previous_week_Reveneue =
+CALCULATE (
+    SUM ( 'public cc_detail'[Revenue] ),
+    FILTER (
+        ALL ( 'public cc_detail' ),
+        'public cc_detail'[week_num2] =
+            MAX ( 'public cc_detail'[week_num2] ) - 1
+    )
+)
 
 ## Dashboard Pages
 ![Credit_Card_Report_page-0001](https://github.com/user-attachments/assets/fee5ad85-b5fc-4cc0-8b18-72f6ff2c8023)
