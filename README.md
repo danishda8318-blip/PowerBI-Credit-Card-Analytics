@@ -45,6 +45,7 @@ Applying business rules
 
 ## DAX Measures
 DAX Measures Used
+
 **1. Age Group Classification**
 AgeGroup =
 
