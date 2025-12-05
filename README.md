@@ -60,6 +60,8 @@ Previous Week Revenue
 Credit Card Financial Weekly Da…
 
 ## Dashboard Pages
+![Credit_Card_Report_page-0001](https://github.com/user-attachments/assets/fee5ad85-b5fc-4cc0-8b18-72f6ff2c8023)
+
 ![Credit_Card_Report_page-0002](https://github.com/user-attachments/assets/c96ec3cb-d257-4654-a825-5f31a86a4443)
 
 
